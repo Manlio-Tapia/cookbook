@@ -1,0 +1,26 @@
+FFmpeg Cookbook
+Note to self, 
+Get info for a video file,
+
+ffmpeg -i video.avi
+Convert a set of images to a video sequence,
+
+ffmpeg -f image2 -i image%d.jpg video.mpg
+Convert a video to a set of images,
+
+ffmpeg -i video.mpg image%d.jpg
+Extract audio from the video,
+
+ffmpeg -i source_video.avi -vn -ar 44100 -ac 2 -ab 192 -f mp3 sound.mp3
+Encode one format to another such as .avi to .mpg,
+
+ffmpeg -i video_origine.avi video_finale.mpg
+Compress using divx,
+
+ffmpeg -i video_origine.avi -s 320x240 -vcodec msmpeg4v2 video_finale.avi
+To record your desktop screen,
+
+ffmpeg -r 30 -s 1280x720 -f x11grab -i :0.0 -vcodec msmpeg4v2 -qscale 1 filename.avi
+To scale, rotate and encode,
+
+ffmpeg -vf "transpose=1,scale=360:640" -qscale 1  -i 1.MOV -vcodec msmpeg4v2 video_finale.avi
